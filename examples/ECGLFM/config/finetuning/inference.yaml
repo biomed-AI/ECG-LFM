@@ -1,0 +1,87 @@
+
+common:
+  fp16: false
+  log_format: json
+  log_interval: 100
+  all_gather_list_size: 2048000
+  # wandb_entity: ecg-pretraining
+  # wandb_project: diagnosis-prediction
+
+common_eval:
+  path: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/checkpoint80.pt
+  #path: /home/linsy/ECG_FM/data/pt/checkpoint_best.pt
+  #path: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/finetune/ptbxl_cpsc2018/AF/checkpoint_best.pt
+  #path: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/finetune/ptbxl_chapman_shaoxing_cpsc2018/LBBB/checkpoint_best.pt
+  #path: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/finetune/ptbxl_cpsc2018/AF/checkpoint_best.pt
+  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/physionet.org/files/features/ptbxl_chapman_shaoxing_cpsc2018_LBBB
+  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/UKB-ECG/features/MI
+  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/physionet.org/files/features/cpsc_2018_AF_fullfeats
+  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/UKB-ECG/features/ptbxl_cpsc2018_AF
+  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/physionet.org/files/features/cpsc_2018_AF2
+  results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/CODE15/ECG/features/preprocessed_survival
+
+checkpoint:
+  save_dir: checkpoints
+  # best_checkpoint_metric: cinc_score
+  # maximize_best_checkpoint_metric: true
+  save_interval: 1
+  keep_last_epochs: 1
+  save_interval_updates: 0
+  no_epoch_checkpoints: false
+  # patience: 30
+
+task:
+  _name: ecg_classification
+  data: ???
+  normalize: false
+  enable_padding: true
+  enable_padding_leads: false
+  leads_to_load: null
+    # I, II, III, aVR, aVL, aVF, V1, V2, V3, V4, V5, V6
+
+dataset:
+  num_workers: 6
+  max_tokens: null 
+  batch_size: 128
+  valid_subset: "train,valid,test"
+  validate_after_updates: 1
+  validate_interval_updates: 1000
+  disable_validation: false
+
+distributed_training:
+  distributed_world_size: 1
+
+criterion:
+  _name: binary_cross_entropy_with_logits
+  report_auc: true
+  report_cinc_score: false
+  weights_file: ???
+
+optimization:
+  max_epoch: 100
+  max_update: 320000
+  lr: [0.00005]
+
+optimizer:
+  _name: adam
+  adam_betas: (0.9, 0.98)
+  adam_eps: 1e-08
+
+lr_scheduler:
+  _name: fixed
+  warmup_updates: 0
+
+model:
+  _name: ecg_transformer_classifier
+  model_path: ???
+  num_labels: 1
+  no_pretrained_weights: false
+  encoder_embed_dim: 1024
+  dropout: 0.0
+  attention_dropout: 0.0
+  activation_dropout: 0.1
+  # encoder_layerdrop: 0.1
+
+  feature_grad_mult: 0.0
+  freeze_finetune_updates: 0
+  in_d: 12
