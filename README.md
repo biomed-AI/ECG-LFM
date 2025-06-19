@@ -8,11 +8,8 @@ ECG-LFM is a foundation model for electrocardiogram (ECG) analysis. ECG-LFM was 
 To reproduce **ECG-LFM**, we suggest first creating a conda environment by:
 
 ~~~shell
-<<<<<<< HEAD
 conda create -n ECG-LFM python=3.9
-=======
 conda create -n ECG-LFM
->>>>>>> 40f60dd (‘update’)
 conda activate ECG-LFM
 ~~~
 
@@ -22,30 +19,27 @@ and then run the following code to install the required package:
 cd fairseq-signals
 pip install --editable ./
 ~~~
+
 ### Requirements
 - `PyTorch version >= 1.5.0`
-<<<<<<< HEAD
-=======
 - `Python version >= 3.6`
->>>>>>> 40f60dd (‘update’)
 
 ## Data pre-processing
 
 ### Pre-process
 
-<<<<<<< HEAD
 Given a directory that contains .dat files from PTB-XL:
 
 ```
 python fairseq_signals/data/ecg/preprocess/preprocess_ptbxl.py \
     /path/to/ptbxl/records500/ \
-=======
+```
+
 Given a directory that contains .dat files from MIMIC-IV-ECG:
 
 ```
 python fairseq_signals/data/ecg/preprocess/preprocess_mimic_iv_ecg.py \
     /path/to/MIMIC-IV-ECG/ \
->>>>>>> 40f60dd (‘update’)
     --dest /path/to/output
 ```
 
@@ -60,17 +54,6 @@ python fairseq_signals/data/ecg/preprocess/manifest.py \
     --valid-percent $valid
 ```
 
-<<<<<<< HEAD
-## 2. Training CapECG for ECG traits prediction
-
-The processed genotype data in .npy format are used as input of CapECG.  The code is:
-
-```
-python train_CapECG.py  --ECG_trait trait \ # indicated ECG trait for prediction
-                --npy_dir  \ # the path of data folder containing two input genotype data (train.npy, test.npy)
-                --pheno_path  ./data/file_pheno \ # the phenotype file (file_pheno) with FID, IID, age, sex, center, batch and trait.
-		--model_dir # the path of the folder for saving the model parameters
-=======
 ## Pre-training
 
 Our pre-training uses the ECGLFM_600m_librivox.yaml config.
@@ -128,7 +111,6 @@ fairseq-hydra-train \
     common.log_format=csv \
     --config-dir $FAIRSEQ_SIGNALS_ROOT/examples/ECGLFM/config/finetuning/ \
     --config-name diagnosis
->>>>>>> 40f60dd (‘update’)
 ```
 
 ## Citation
