@@ -263,7 +263,7 @@ def train(
     logger.info("Start iterating over samples")
     for i, samples in tqdm(enumerate(progress)): 
 
-        samples[0]['label'] = samples[0]['label'].view(-1, int(cfg.model.num_labels))
+        #samples[0]['label'] = samples[0]['label'].view(-1, int(cfg.model.num_labels))
         with metrics.aggregate("train_inner"), torch.autograd.profiler.record_function(
             "train_step-%d" % i
         ):  
