@@ -8,7 +8,6 @@ ECG-LFM is a foundation model for electrocardiogram (ECG) analysis. ECG-LFM was 
 To reproduce **ECG-LFM**, we suggest first creating a conda environment by:
 
 ~~~shell
-conda create -n ECG-LFM python=3.9
 conda create -n ECG-LFM
 conda activate ECG-LFM
 ~~~
@@ -16,7 +15,6 @@ conda activate ECG-LFM
 and then run the following code to install the required package:
 
 ~~~shell
-cd fairseq-signals
 pip install --editable ./
 ~~~
 
@@ -27,13 +25,6 @@ pip install --editable ./
 ## Data pre-processing
 
 ### Pre-process
-
-Given a directory that contains .dat files from PTB-XL:
-
-```
-python fairseq_signals/data/ecg/preprocess/preprocess_ptbxl.py \
-    /path/to/ptbxl/records500/ \
-```
 
 Given a directory that contains .dat files from MIMIC-IV-ECG:
 
