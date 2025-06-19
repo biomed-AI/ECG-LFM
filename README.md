@@ -43,6 +43,7 @@ Given a directory that contains pre-processed data:
 python fairseq_signals/data/ecg/preprocess/manifest.py \
     /path/to/data/ \
     --dest /path/to/manifest \
+    --test-percent $test \
     --valid-percent $valid
 ```
 
