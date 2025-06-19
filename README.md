@@ -15,6 +15,7 @@ conda activate ECG-LFM
 and then run the following code to install the required package:
 
 ~~~shell
+cd ECG-LFM
 pip install --editable ./
 ~~~
 
