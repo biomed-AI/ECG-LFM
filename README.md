@@ -119,15 +119,10 @@ If you find our codes useful, please consider citing our work:
 
 ~~~bibtex
 
-
 @article{
   title={A self-supervised electrocardiogram foundation model for empowering cardiovascular disease prediction and genetic factor discovery},
   author={Siying Lin, Yuedong Yang, Huiying Zhao*},
   journal={},
   year={2025},
 }
-<<<<<<< HEAD
 ~~~
-=======
-~~~
->>>>>>> 40f60dd (‘update’)
