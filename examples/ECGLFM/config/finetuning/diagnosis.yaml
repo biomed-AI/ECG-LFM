@@ -15,7 +15,6 @@ checkpoint:
   keep_last_epochs: 1
   save_interval_updates: 0
   no_epoch_checkpoints: false
-  #restore_file: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/finetune/STTC/checkpoint1.pt
   # patience: 30
 
 task:
