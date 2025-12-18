@@ -8,17 +8,8 @@ common:
   # wandb_project: diagnosis-prediction
 
 common_eval:
-  path: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/checkpoint80.pt
-  #path: /home/linsy/ECG_FM/data/pt/checkpoint_best.pt
-  #path: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/finetune/ptbxl_cpsc2018/AF/checkpoint_best.pt
-  #path: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/finetune/ptbxl_chapman_shaoxing_cpsc2018/LBBB/checkpoint_best.pt
-  #path: /bigdat2/user/linsy/bigdat1/linsy/MIMIC/ECG_copy/physionet.org/static/published-projects/mimic-iv-ecg/mimic-iv-ecg-diagnostic-electrocardiogram-matched-subset-1.0/XG_output/2024.11.10/finetune/ptbxl_cpsc2018/AF/checkpoint_best.pt
-  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/physionet.org/files/features/ptbxl_chapman_shaoxing_cpsc2018_LBBB
-  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/UKB-ECG/features/MI
-  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/physionet.org/files/features/cpsc_2018_AF_fullfeats
-  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/UKB-ECG/features/ptbxl_cpsc2018_AF
-  #results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/physionet.org/files/features/cpsc_2018_AF2
-  results_path: /bigdat2/user/linsy/bigdat1/linsy/Dataset/CODE15/ECG/features/preprocessed_survival
+  path: ...
+  results_path: ...
 
 checkpoint:
   save_dir: checkpoints
