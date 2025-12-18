@@ -8,7 +8,7 @@ ECG-LFM is a foundation model for electrocardiogram (ECG) analysis. ECG-LFM was 
 To reproduce **ECG-LFM**, we suggest first creating a conda environment by:
 
 ~~~shell
-conda create -n ECG-LFM
+conda create -n ECG-LFM python=3.9
 conda activate ECG-LFM
 ~~~
 
