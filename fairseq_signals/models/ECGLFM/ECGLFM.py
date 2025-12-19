@@ -31,7 +31,7 @@ from fairseq_signals.modules import (
     TransposeLast,
 )
 from fairseq_signals.modules.checkpoint_activations import checkpoint_wrapper
-from fairseq_signals.modules.conformer_layer import ConformerWav2Vec2EncoderLayer
+from fairseq_signals.modules.conformer_layer import ConformerECGLFMEncoderLayer
 from fairseq_signals.modules.transformer_sentence_encoder import init_bert_params
 from fairseq_signals.utils1 import buffered_arange, index_put
 
@@ -43,7 +43,7 @@ LAYER_TYPE_CHOICES = ChoiceEnum(["transformer", "conformer"])
 
 
 @dataclass
-class W2vBertConfig(ECGTransformerConfig):
+class ECGLFMConfig(ECGTransformerConfig):
     extractor_mode: EXTRACTOR_MODE_CHOICES = field(
         default="default",
         metadata={
@@ -388,9 +388,9 @@ class W2vBertConfig(ECGTransformerConfig):
     )
 
 
-@register_model("w2vbert", dataclass=W2vBertConfig)
-class W2vBertModel(ECGTransformerModel):
-    def __init__(self, cfg: W2vBertConfig):
+@register_model("ECGLFM", dataclass=ECGLFMConfig)
+class ECGLFMModel(ECGTransformerModel):
+    def __init__(self, cfg: ECGLFMConfig):
         super().__init__(cfg)
         self.cfg = cfg
         if cfg.fbank_features <= 0:
@@ -488,7 +488,7 @@ class W2vBertModel(ECGTransformerModel):
         """Build a new model instance."""
 
         return cls(cfg)
-    # def build_model(cls, cfg: W2vBertConfig, task=None):
+    # def build_model(cls, cfg: ECGLFMConfig, task=None):
     #     """Build a new model instance."""
 
     #     return cls(cfg)
@@ -1064,7 +1064,7 @@ def make_conv_pos(e, k, g):
 
 
 class TransformerEncoder(nn.Module):
-    def build_encoder_layer(self, args: W2vBertConfig, is_moe_layer: bool = False):
+    def build_encoder_layer(self, args: ECGLFMConfig, is_moe_layer: bool = False):
         if args.layer_type == "transformer":
             layer = TransformerSentenceEncoderLayer(
                 embedding_dim=self.embedding_dim,
@@ -1077,7 +1077,7 @@ class TransformerEncoder(nn.Module):
                 layer_norm_first=args.layer_norm_first,
             )
         elif args.layer_type == "conformer":
-            layer = ConformerWav2Vec2EncoderLayer(
+            layer = ConformerECGLFMEncoderLayer(
                 args=args,
                 embed_dim=self.embedding_dim,
                 ffn_embed_dim=args.encoder_ffn_embed_dim,
@@ -1094,7 +1094,7 @@ class TransformerEncoder(nn.Module):
             layer = checkpoint_wrapper(layer)
         return layer
 
-    def __init__(self, args: W2vBertConfig):
+    def __init__(self, args: ECGLFMConfig):
         super().__init__()
 
         self.dropout = args.dropout
@@ -1234,10 +1234,10 @@ class TransformerEncoder(nn.Module):
 
 
 class ConformerEncoder(TransformerEncoder):
-    def build_encoder_layer_w2vbert(
+    def build_encoder_layer_ECGLFM(
         self, args, layer_count, is_moe_layer: bool = False
     ):
-        layer = ConformerWav2Vec2EncoderLayer(
+        layer = ConformerECGLFMEncoderLayer(
             args=args,
             embed_dim=self.embedding_dim,
             ffn_embed_dim=args.encoder_ffn_embed_dim,
@@ -1278,7 +1278,7 @@ class ConformerEncoder(TransformerEncoder):
 
         self.layers = nn.ModuleList(
             [
-                self.build_encoder_layer_w2vbert(args, layer_count)
+                self.build_encoder_layer_ECGLFM(args, layer_count)
                 for layer_count in range(args.encoder_layers)
             ]
         )
