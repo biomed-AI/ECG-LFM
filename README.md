@@ -47,6 +47,16 @@ python fairseq_signals/data/ecg/preprocess/manifest.py \
     --valid-percent $valid
 ```
 
+### Prepare training data manifest
+
+Given a directory that contains pre-processed data:
+
+```
+python fairseq_signals/data/ecg/preprocess/convert_to_cmsc_manifest.py \
+    /path/to/pretrain/train.tsv \
+    --dest /path/to/manifest
+```
+
 ## Pre-training
 
 Our pre-training uses the ECGLFM_600m_librivox.yaml config.
