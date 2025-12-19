@@ -335,8 +335,8 @@ class ConformerEncoderLayer(torch.nn.Module):
         return x, (attn, layer_result)
 
 
-class ConformerWav2Vec2EncoderLayer(ConformerEncoderLayer):
-    """Encoder layer for Wav2vec2 encoder"""
+class ConformerECGLFMEncoderLayer(ConformerEncoderLayer):
+    """Encoder layer for ECGLFM encoder"""
 
     def forward(
         self,
@@ -533,8 +533,8 @@ class BranchformerEncoderLayer(torch.nn.Module):
         print(x.shape)
         return x, (attn, layer_result)
 
-class BranchformerWav2Vec2EncoderLayer(BranchformerEncoderLayer):
-    """Encoder layer for Wav2vec2 encoder"""
+class BranchformerECGLFMEncoderLayer(BranchformerEncoderLayer):
+    """Encoder layer for ECGLFM encoder"""
 
     def forward(
         self,
