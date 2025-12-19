@@ -89,9 +89,8 @@ lr_scheduler:
   _name: fixed
   warmup_updates: 0
 
-# w2vbert wav2vec2
 model:
-  _name: w2vbert
+  _name: ECGLFM
   #quantize_targets: true
   #extractor_mode: layer_norm
   layer_norm_first: true
