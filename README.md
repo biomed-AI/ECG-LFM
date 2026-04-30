@@ -1,7 +1,7 @@
 ![](figures/Pipeline1.png)
 
 # ECG-LFM: A self-supervised electrocardiogram foundation model for empowering cardiovascular disease prediction and genetic factor discovery 
-ECG-LFM is a foundation model for electrocardiogram (ECG) analysis. ECG-LFM was developed based on the fairseq_signals framework, which implements a collection of deep learning methods for ECG analysis.
+ECG-LFM is a foundation model for electrocardiogram (ECG) analysis. ECG-LFM was developed based on the [fairseq_signals](https://github.com/Jwoo5/fairseq-signals) framework, which implements a collection of deep learning methods for ECG analysis.
 
 ## Installation
 
