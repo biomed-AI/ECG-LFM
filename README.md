@@ -83,6 +83,7 @@ fairseq-hydra-train \
     --config-dir $FAIRSEQ_SIGNALS_ROOT/examples/ECGLFM/config/pretraining \
     --config-name ECGLFM_600m_librivox
 ```
+Model checkpoints have been made publicly available for download on [zenodo](https://zenodo.org/records/20388950)
 
 ## Fine-tuning
 
